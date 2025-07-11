@@ -1,1 +1,1 @@
-# Ai_Image_Generator
+# AImG
