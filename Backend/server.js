@@ -3,6 +3,7 @@ import cors from 'cors';
 import "dotenv/config";
 import connectDB from './config/db.js';
 import userRouter from './routes/userRoutes.js';
+import imageRouter from './routes/imageRoutes.js';
 
 const port = process.env.PORT || 2525;
 const app = express();
@@ -16,10 +17,13 @@ const startServer = async () => {
     });
 };
 
-startServer();
 
 app.use('/api/user', userRouter)
+app.use('/api/image', imageRouter)
+
 
 app.get('/', (req, res) => {
     res.send('API is running...');
 });
+
+startServer();
