@@ -2,6 +2,8 @@ import React,{useState} from 'react';
 import { assets } from '../assets/assets';
 // eslint-disable-next-line no-unused-vars
 import {motion} from "framer-motion";
+import { useContext } from 'react';
+import { AppContext } from "../contexts/AppContext.jsx";
 
 
 const Result = () => {
@@ -11,11 +13,14 @@ const Result = () => {
   const[loading, setLoading] = useState(false);
   const[input, setInput] = useState('');
 
+  const{generateImage}= useContext(AppContext)
+
   const onsubmitHandler = async (e) => {
     e.preventDefault()
     setLoading(true);
 
     if(input){
+      const image = await generateImage(input) 
       if(image){
         setIsImageLoaded(true)
         setImage(image)
