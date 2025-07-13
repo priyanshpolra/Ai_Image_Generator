@@ -1,7 +1,7 @@
 /* eslint-disable no-unused-vars */
 import React, { useContext, useEffect, useState } from 'react'
 import { assets } from '../assets/assets.js'
-import { AppContext } from '../contexts/AppContext.jsx'
+import { AppContext } from '../contexts/AppContext'
 import { motion } from 'framer-motion'
 import axios from 'axios'
 import { toast } from 'react-toastify'
@@ -30,7 +30,7 @@ const Login = () => {
                     localStorage.setItem('token', data.token)
                     setShowLogin(false)
                 }else{
-                  toast.error(data.message)
+                    toast.error(data.message)
                 }
             }else{
                 const {data} = await axios.post(backendUrl + '/api/user/register', {name, email, password})
@@ -41,7 +41,7 @@ const Login = () => {
                     localStorage.setItem('token', data.token)
                     setShowLogin(false)
                 }else{
-                  toast.error(data.message)
+                    toast.error(data.message)
                 }
             }
 
@@ -57,7 +57,7 @@ const Login = () => {
             document.body.style.overflow = 'unset';  
         }
     },[])
-  return (
+return (
     <div className='fixed top-0 left-0 right-0 bottom-0 z-10 backdrop-blur-sm bg-black/30 flex justify-center items-center'>
         <motion.form onSubmit={onSubmitHandler}
         initial={{opacity:0.2, y:50}}
